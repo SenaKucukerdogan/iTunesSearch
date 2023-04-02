@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to house tabs and root tab controllers
 final class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
@@ -16,22 +17,23 @@ final class TabBarController: UITabBarController {
     }
 
     private func setUpTabs(){
-        let appsVC   = AppsViewController()
+
         let moviesVC = MoviesViewController()
         let musicsVC = MusicsViewController()
         let booksVC  = BooksViewController()
+        let appsVC   = AppsViewController()
         
-        let appsNC   = UINavigationController(rootViewController: appsVC)
         let moviesNC = UINavigationController(rootViewController: moviesVC)
         let musicsNC = UINavigationController(rootViewController: musicsVC)
         let booksNC  = UINavigationController(rootViewController: booksVC)
+        let appsNC   = UINavigationController(rootViewController: appsVC)
         
-        appsNC.tabBarItem = UITabBarItem(title: "Apps", image: UIImage(systemName: "app"), tag: 1)
-        moviesNC.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(systemName: "film"), tag: 2)
-        musicsNC.tabBarItem = UITabBarItem(title: "Musics", image: UIImage(systemName: "music.note"), tag: 3)
-        booksNC.tabBarItem = UITabBarItem(title: "Books", image: UIImage(systemName: "book"), tag: 4)
+        moviesNC.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(systemName: "film"), tag: 1)
+        musicsNC.tabBarItem = UITabBarItem(title: "Musics", image: UIImage(systemName: "music.note"), tag: 2)
+        booksNC.tabBarItem = UITabBarItem(title: "Books", image: UIImage(systemName: "book"), tag: 3)
+        appsNC.tabBarItem = UITabBarItem(title: "Apps", image: UIImage(systemName: "app"), tag: 4)
         
-        setViewControllers([appsNC, moviesNC, musicsNC, booksNC], animated: true)
+        setViewControllers([moviesNC, musicsNC, booksNC, appsNC], animated: true)
     }
 }
 

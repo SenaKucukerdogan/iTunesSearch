@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct GetAllMovieResponse: Codable{
+    let resultCount:Int?
+    let results:[MovieModel]
+}

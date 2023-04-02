@@ -11,7 +11,7 @@ struct MovieModel:Codable{
     
     let wrapperType:WrapperType
     let kind:Kind
-    let artistId:Int
+    let artistId:Int?
     let trackId:Int
     let artistName:String
     let trackName:String

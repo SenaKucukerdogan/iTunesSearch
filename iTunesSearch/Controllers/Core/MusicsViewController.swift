@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Musics
 final class MusicsViewController: UIViewController {
 
     override func viewDidLoad() {

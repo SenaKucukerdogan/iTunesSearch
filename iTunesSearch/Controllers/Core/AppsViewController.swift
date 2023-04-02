@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Apps
 final class AppsViewController: UIViewController {
 
     override func viewDidLoad() {

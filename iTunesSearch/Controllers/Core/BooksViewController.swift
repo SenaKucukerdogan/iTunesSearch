@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Books
 final class BooksViewController: UIViewController {
 
     override func viewDidLoad() {
