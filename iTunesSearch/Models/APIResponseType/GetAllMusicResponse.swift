@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct GetAllMusicResponse: Codable{
+    let resultCount:Int?
+    let results:[MusicModel]
+}

@@ -8,13 +8,19 @@
 import UIKit
 
 /// Controller to show and search for Movies
-final class MoviesViewController: UIViewController, MovieListViewDelegate {
+final class MoviesViewController: UIViewController, MovieListViewDelegate, UISearchBarDelegate {
 
     private let movieListView = MovieListView()
+    
+    let searchBar = UISearchBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         setUpView()
+        setUpUI()
+        addSearchButton()
+        
     }
     
     private func setUpView(){
@@ -27,6 +33,29 @@ final class MoviesViewController: UIViewController, MovieListViewDelegate {
             movieListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             movieListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    
+    private func setUpUI(){
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(didTapFilter))
+        
+    }
+    
+    private func addSearchButton(){
+        searchBar.sizeToFit()
+        searchBar.becomeFirstResponder()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+    }
+    
+    @objc private func didTapSearch(){
+//        let vc = SearchViewController(searchKey: .term)
+        guard let searchBarText = searchBar.text else { return }
+        navigationItem.titleView = searchBar
+        Request.listMovieRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "movie"), ParameterKey(searchKey: .term, value: "\(searchBarText)")])
+    }
+    
+    @objc private func didTapFilter(){
+        
     }
     
     // MARK: - MovieListViewDelegate

@@ -15,7 +15,7 @@ struct BooksModel:Codable{
     let releaseDate:String
     let trackId:Int
     let trackName:String
-    let kind:Kind
+    let kind:String?
     let artistId:Int
     let artistName:String
     

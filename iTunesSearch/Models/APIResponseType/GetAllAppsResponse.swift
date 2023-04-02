@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct GetAllAppsResponse: Codable{
+    let resultCount:Int?
+    let results:[AppsModel]
+}

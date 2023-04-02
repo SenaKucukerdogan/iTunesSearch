@@ -32,8 +32,8 @@ class MovieListView: UIView {
         collectionView.alpha = 1
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.cellIdentifier)
-        collectionView.register(MovieFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                                withReuseIdentifier: MovieFooterLoadingCollectionReusableView.identifier)
+//        collectionView.register(MovieFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+//                                withReuseIdentifier: MovieFooterLoadingCollectionReusableView.identifier)
         return collectionView
     }()
     
@@ -49,6 +49,8 @@ class MovieListView: UIView {
         viewModel.delegate = self
         viewModel.fetchMovies()
         setUpCollectionView()
+        collectionView.reloadData()
+        
     }
     
     required init?(coder: NSCoder) {

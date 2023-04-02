@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Object that represents a single API call
 final class Request {
@@ -54,8 +55,38 @@ final class Request {
         self.endpoint = endpoint
         self.queryParameters = queryParameters
     }
+    
+    convenience init?(url: URL){
+        let string = url.absoluteString
+        if !string.contains(Constant.baseUrl){
+            return nil
+        }
+        let trimmed = string.replacingOccurrences(of: Constant.baseUrl+"/", with: "")
+        if trimmed.contains("/"){
+            let components = trimmed.components(separatedBy: "/")
+            if !components.isEmpty{
+                let endpointString = components[0]
+                if let endpoint = Endpoint(rawValue: endpointString){
+                    self.init(endpoint: endpoint)
+                }
+            }            
+        }
+        else if trimmed.contains("?"){
+            let components = trimmed.components(separatedBy: "?")
+            if !components.isEmpty{
+                let endpointString = components[0]
+                if let endpoint = Endpoint(rawValue: endpointString){
+                    self.init(endpoint: endpoint)
+                }
+            }
+        }
+        return nil
+    }
 }
 
 extension Request{
-    static let listMovieRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "movie"), ParameterKey(searchKey: .term, value: "j")])
+    static var listMovieRequest = Request(endpoint: .search)
+    static var listMusicRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "music"), ParameterKey(searchKey: .term, value: "j")])
+    static var listBookRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "ebook"), ParameterKey(searchKey: .term, value: "jack")])
+    static var listAppsRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "software"), ParameterKey(searchKey: .term, value: "jack")])
 }

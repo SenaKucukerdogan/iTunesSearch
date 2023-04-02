@@ -8,14 +8,14 @@
 import UIKit
 
 /// Controller to show and search for Books
-final class BooksViewController: UIViewController, BookListViewDelegate {
+final class BookViewController: UIViewController, BookListViewDelegate {
 
     private let bookListView = BookListView()
-
+    private let searchBar = UISearchBar()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-
+        addSearchButton()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(didTapFilter))
         
 
@@ -31,6 +31,17 @@ final class BooksViewController: UIViewController, BookListViewDelegate {
             bookListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             bookListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    
+    private func addSearchButton(){
+        searchBar.sizeToFit()
+        searchBar.becomeFirstResponder()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+    }
+    
+    @objc private func didTapSearch(){
+//        let vc = SearchViewController(searchKey: .term)
+        navigationItem.titleView = searchBar
     }
     
     @objc private func didTapFilter(){

@@ -20,7 +20,7 @@ final class TabBarController: UITabBarController {
 
         let moviesVC = MoviesViewController()
         let musicsVC = MusicsViewController()
-        let booksVC  = BooksViewController()
+        let booksVC  = BookViewController()
         let appsVC   = AppsViewController()
         
         let moviesNC = UINavigationController(rootViewController: moviesVC)

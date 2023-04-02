@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct GetAllBookResponse: Codable{
+    let resultCount:Int?
+    let results:[BooksModel]
+}

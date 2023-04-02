@@ -9,8 +9,8 @@ import Foundation
 
 struct MusicModel:Codable{
     
-    let wrapperType:WrapperType
-    let kind:Kind
+    let wrapperType:String?
+    let kind:String?
     let artistId:Int
     let collectionId:Int
     let trackId:Int

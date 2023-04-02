@@ -10,7 +10,7 @@ import Foundation
 struct AppsModel:Codable{
     
     let artworkUrl100:String
-    let kind:Kind
+    let kind:String?
     let description:String
     let artistId:Int
     let artistName:String
@@ -19,6 +19,6 @@ struct AppsModel:Codable{
     let trackId:Int
     let trackName:String
     let version:String
-    let wrapperType:WrapperType
+    let wrapperType:String?
     
 }

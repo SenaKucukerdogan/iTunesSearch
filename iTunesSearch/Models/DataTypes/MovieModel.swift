@@ -9,8 +9,8 @@ import Foundation
 
 struct MovieModel:Codable{
     
-    let wrapperType:WrapperType
-    let kind:Kind
+    let wrapperType:String?
+    let kind:String?
     let artistId:Int?
     let trackId:Int
     let artistName:String
