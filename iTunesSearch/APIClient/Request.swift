@@ -57,5 +57,5 @@ final class Request {
 }
 
 extension Request{
-    static let listMovieRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "movie"), ParameterKey(searchKey: .term, value: "jack+johnson")])
+    static let listMovieRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "movie"), ParameterKey(searchKey: .term, value: "j")])
 }

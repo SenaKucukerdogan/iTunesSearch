@@ -1,13 +1,13 @@
 //
-//  MovieListView.swift
+//  BookListView.swift
 //  iTunesSearch
 //
-//  Created by Sena Küçükerdoğan on 1.04.2023.
+//  Created by Sena Küçükerdoğan on 2.04.2023.
 //
 
 import UIKit
 
-class MovieListView: UIView {
+class BookListView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

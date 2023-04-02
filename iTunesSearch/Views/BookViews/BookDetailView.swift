@@ -1,5 +1,5 @@
 //
-//  MovieDetailView.swift
+//  BookDetailView.swift
 //  iTunesSearch
 //
 //  Created by Sena Küçükerdoğan on 2.04.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieDetailView: UIView {
+class BookDetailView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

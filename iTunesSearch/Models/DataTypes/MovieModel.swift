@@ -18,6 +18,6 @@ struct MovieModel:Codable{
     let artworkUrl100:String
     let releaseDate:String
     let country:String
-    let shortDescription:String
+    let shortDescription:String?
     
 }

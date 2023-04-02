@@ -8,29 +8,33 @@
 import UIKit
 
 /// Controller to show and search for Movies
-final class MoviesViewController: UIViewController {
+final class MoviesViewController: UIViewController, MovieListViewDelegate {
+
+    private let movieListView = MovieListView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let request = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "movie"), ParameterKey(searchKey: .term, value: "Jack+Johnson")])
-//        print(request.url)
-//        
-//        Service.shared.execute(request, expecting: MovieModel.self) { result in
-//            switch result {
-//            case .success:
-//                break
-//            case .failure(let error):
-//                print(String(describing: error))
-//            }
-//        }
-        Service.shared.execute(.listMovieRequest, expecting: GetAllMovieResponse.self) { result in
-            switch result {
-                case .success(let model):
-                print(String(describing: model.resultCount))
-                case .failure(let error):
-                    print(String(describing: error))
-            }
-        }
+        setUpView()
+    }
+    
+    private func setUpView(){
+        movieListView.delegate = self
+        view.addSubview(movieListView)
+        
+        NSLayoutConstraint.activate([
+            movieListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            movieListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            movieListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            movieListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
+    // MARK: - MovieListViewDelegate
+    func movieListView(_ movieListView: MovieListView, didSelectMovie movie: MovieModel) {
+        // Open detail controller for that movie
+        
+        let viewModel = MovieDetailViewViewModel(movie: movie)
+        let detailVC = MovieDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
