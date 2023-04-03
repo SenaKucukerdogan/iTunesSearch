@@ -92,9 +92,18 @@ final class BookCollectionViewCell: UICollectionViewCell{
     }
     
     public func configure(with viewModel: BookCollectionViewCellViewModel){
+        let dateString = "\(viewModel.date)"
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+        
+        let date: Date? = dateFormatterGet.date(from: dateString)
+        
         collectionNameLabel.text = viewModel.collectionName
         countryLabel.text = viewModel.country
-        dateLabel.text = viewModel.date
+        dateLabel.text = dateFormatterPrint.string(from: date!)
         viewModel.fetchImage { [weak self] result in
             switch result {
             case .success(let data):

@@ -11,7 +11,6 @@ import UIKit
 final class MoviesViewController: UIViewController, MovieListViewDelegate, UISearchBarDelegate {
 
     private let movieListView = MovieListView()
-    
     let searchBar = UISearchBar()
 
     override func viewDidLoad() {

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 /// Object that represents a single API call
 final class Request {
@@ -85,8 +84,8 @@ final class Request {
 }
 
 extension Request{
-    static var listMovieRequest = Request(endpoint: .search)
-    static var listMusicRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "music"), ParameterKey(searchKey: .term, value: "j")])
-    static var listBookRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "ebook"), ParameterKey(searchKey: .term, value: "jack")])
-    static var listAppsRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "software"), ParameterKey(searchKey: .term, value: "jack")])
+    static var listMovieRequest = Request(endpoint: .search) //, queryParameters: [ParameterKey(searchKey: .media, value: "movie"), ParameterKey(searchKey: .term, value: "j")])
+    static let listMusicRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "music"), ParameterKey(searchKey: .term, value: "j")])
+    static let listBookRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "ebook"), ParameterKey(searchKey: .term, value: "jack")])
+    static let listAppsRequest = Request(endpoint: .search, queryParameters: [ParameterKey(searchKey: .media, value: "software"), ParameterKey(searchKey: .term, value: "jack")])
 }

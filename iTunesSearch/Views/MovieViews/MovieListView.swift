@@ -49,8 +49,6 @@ class MovieListView: UIView {
         viewModel.delegate = self
         viewModel.fetchMovies()
         setUpCollectionView()
-        collectionView.reloadData()
-        
     }
     
     required init?(coder: NSCoder) {

@@ -18,10 +18,12 @@ final class MovieListViewModel:NSObject{
     
     public weak var delegate: MovieListViewModelDelegate?
     
+    
 //    private var isLoadingMoreMovies = false
     
     private var movies: [MovieModel] = []{
         didSet{
+            
             for movie in movies{
                 let viewModel = MovieCollectionViewCellViewModel(collectionName: movie.trackName, country: movie.country, date: movie.releaseDate, movieImageUrl: URL(string: movie.artworkUrl100))
                 
